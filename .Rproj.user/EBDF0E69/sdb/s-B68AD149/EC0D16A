@@ -1,0 +1,16 @@
+{
+    "contents" : "## Put comments here that give an overall description of what your\n## functions do\n\n## Write a short comment describing this function\n#  if X is a square invertible matrix, then solve(X) returns its inverse\nmakeCacheMatrix <- function(x = matrix()) {\n  # This function creates a special \"matrix\" object that can cache its inverse.\n  # ix is the inverse of x - need to create it and cache it\n  \n  ix <- NULL\n  set <- function(y) {\n    x <<- y\n    ix <<- NULL\n  }\n  get <- function() x\n  setinv <- function(inv) ix <<- inv\n  getinv <- function() ix\n  list(set = set, get = get, setinv = setinv, getinv = getinv)\n\n}\n\n\n## Write a short comment describing this function\n# this function calculates the inverse of the special matrix created with the above function\n#However, it first checks to see if the inverse has already been calculated\n# If so, it gets the inverse from the cache and skips the calculation\n# Otherwise it calculates the inverse of the matrix and sets the value of the inverse via the setinv function\n\ncacheSolve <- function(x, ...) {\n        ## Return a matrix that is the inverse of 'x'\n  i <- x$getinv()\n  if (!is.null(i)){\n    message(\"getting cached inverse\")\n    return(i)\n  }\n# message(\"inverse is not cached\")\n\n data<-x$get()\n message(data)\n  i <- solve(data, ...)\n  x$setinv(i)\n  i\n}\n",
+    "created" : 1408466794398.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2979965285",
+    "id" : "EC0D16A",
+    "lastKnownWriteTime" : 1408591043,
+    "path" : "~/GitHub/ProgrammingAssignment2/cachematrix.R",
+    "project_path" : "cachematrix.R",
+    "properties" : {
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}
